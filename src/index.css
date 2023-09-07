@@ -23,3 +23,21 @@ body {
   width: 100%;
   overflow: hidden;
 }
+
+.link {
+  position: fixed;
+  right: 8px;
+  top: 8px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  svg {
+      margin-right: 8px;
+  }
+  &:hover {
+      opacity: 0.8;
+  }
+}
