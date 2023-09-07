@@ -34,10 +34,12 @@ body {
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
-  svg {
-      margin-right: 8px;
-  }
-  &:hover {
-      opacity: 0.8;
-  }
+}
+
+.link svg {
+  margin-right: 8px;
+}
+
+.link:hover {
+  opacity: 0.8;
 }
