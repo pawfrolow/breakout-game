@@ -1,4 +1,4 @@
-# Jackson Pollock Simulator
+# Breakout canvas game
 
 local run
 
