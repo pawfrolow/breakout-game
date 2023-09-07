@@ -86,3 +86,8 @@ export const throttle = <R, A extends any[]>(
         },
     ];
 };
+
+export const getColorScheme = (): "dark" | "light" =>
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";

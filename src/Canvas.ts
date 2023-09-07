@@ -50,8 +50,9 @@ class Canvas {
     };
 
     draw = () => {
-        this.stopAnimation();
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.clearDraw();
+
+        this.fillBackground();
 
         if (this.pressedBtn) {
             this.platform.moveButton(this.pressedBtn);
@@ -66,6 +67,16 @@ class Canvas {
         this.bricks.draw();
 
         this.animationId = requestAnimationFrame(this.draw);
+    };
+
+    clearDraw = () => {
+        this.stopAnimation();
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    };
+
+    fillBackground = () => {
+        this.ctx.fillStyle = config.background.color;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     };
 
     moveBall = () => {
@@ -94,8 +105,6 @@ class Canvas {
             this.ball.switchDirection(collisionSide);
             if (collisionSide === ECollisionSides.vertical) {
                 // change speed & angle ball
-                console.log(this.platform.speed);
-
                 const speedFactor = () => {
                     let speed = Math.abs(this.platform.speed);
                     if (speed < 1) {
@@ -125,13 +134,19 @@ class Canvas {
                 if (this.platform.speed < 0 && this.ball.direction.x === ESides.right) {
                     this.ball.dy = config.ball.dy;
                     this.ball.dx = 2;
-                    this.ball.speed = config.ball.speed;
+                    this.ball.speed = 1.5;
                 }
 
                 // платформа двигалась вправо а шар влево
                 if (this.platform.speed > 0 && this.ball.direction.x === ESides.left) {
                     this.ball.dy = config.ball.dy;
                     this.ball.dx = 2;
+                    this.ball.speed = 1.5;
+                }
+
+                if (this.platform.speed === 0) {
+                    this.ball.dy = config.ball.dy;
+                    this.ball.dx = config.ball.dx;
                     this.ball.speed = config.ball.speed;
                 }
             }
